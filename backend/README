@@ -1,0 +1,7 @@
+ La prueba del precio viejo: con el carrito armado, cambiar a mano el precio de un material en SSMS 
+(UPDATE) y guardar → el total guardado usa el precio NUEVO, no el que mostraba la pantalla. 
+Explicar en el README por qué eso es lo correcto (y qué pasaría si el front mandara los precios).
+
+
+
+Al modificar el precio de uno de los materiales directamente con la herramienta gráfica en SQL server, y posteriormente a ello, volver a la pestaña de la app web, el total generado en el carrito sigue apareciendo como el monto antiguo teniendo en cuenta el precio anterior de dicho material, pero lo bueno está en que al momento de guardarlo, se genera el registro del presupuesto con el total basado en el nuevo precio de la DB. Esto esta correcto ya que jamás se deben guardar nombres, precios, totales, por que en el caso de que ocurra un aumento por ejemplo en el precio unitario de los productos, todos esos presupuestos ya armados en el carro, contienen el precio viejo y por ende estaríamos perdiendo dinero, en cambio si guardamos solo idmaterial y cantidad seleccionada, y el total se calcula en base a ello teniendo en cuenta el precio de dicho material en la DB, ese monto total siempre va a estar actualizado con los valores actuales de los precios.
