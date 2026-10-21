@@ -1,0 +1,270 @@
+/* ==========================================================================
+   Variables y Configuración General
+   ========================================================================== */
+:root {
+    --primary: #d9531e;        /* Naranja construcción / terracota */
+    --primary-hover: #b83e10;
+    --bg-main: #f4f6f8;         /* Fondo de la página */
+    --bg-card: #ffffff;         /* Fondo de tarjetas y secciones */
+    --text-color: #2c3e50;      /* Texto principal */
+    --text-muted: #7f8c8d;     /* Texto secundario */
+    --border-color: #e2e8f0;   /* Bordes de tablas e inputs */
+    --danger: #e74c3c;         /* Rojo vaciar / errores */
+    --danger-hover: #c0392b;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --radius: 8px;
+    --transition: all 0.2s ease-in-out;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   Encabezado (Header)
+   ========================================================================== */
+.encabezado {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: #ffffff;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.encabezado h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.25rem;
+}
+
+.encabezado p {
+    color: #94a3b8;
+    font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   Layout Principal (Grid Responsivo)
+   ========================================================================== */
+.principal {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    flex: 1;
+}
+
+@media (min-width: 992px) {
+    .principal {
+        grid-template-columns: 3fr 2fr;
+    }
+    
+    .seccion.ancha {
+        grid-column: span 2;
+    }
+    
+    .principal > .seccion:not(.ancha):first-child {
+        grid-column: span 1;
+    }
+}
+
+/* ==========================================================================
+   Secciones / Tarjetas
+   ========================================================================== */
+.seccion {
+    background-color: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.seccion h2 {
+    font-size: 1.35rem;
+    color: #0f172a;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+/* ==========================================================================
+   Tablas (Materiales e Historial)
+   ========================================================================== */
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.tabla th {
+    background-color: #f8fafc;
+    color: var(--text-muted);
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tabla td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.tabla tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.tabla tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ==========================================================================
+   Carrito de Compras
+   ========================================================================== */
+.lista-carrito {
+    list-style: none;
+    margin-bottom: 1.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 0.25rem;
+}
+
+.lista-carrito li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.carrito-vacio {
+    color: var(--text-muted);
+    font-style: italic;
+    text-align: center;
+    padding: 2rem 0 !important;
+    border: none !important;
+}
+
+.total-linea {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-top: 2px solid var(--border-color);
+    margin-bottom: 1.25rem;
+}
+
+.total-linea strong {
+    color: var(--primary);
+    font-size: 1.4rem;
+}
+
+/* ==========================================================================
+   Formularios e Inputs
+   ========================================================================== */
+.form-final {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.form-final input[type="text"] {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.form-final input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(217, 83, 30, 0.15);
+}
+
+/* ==========================================================================
+   Botones
+   ========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-principal {
+    background-color: var(--primary);
+    color: #ffffff;
+}
+
+.btn-principal:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-vaciar {
+    background-color: transparent;
+    color: var(--danger);
+    border: 1px solid var(--danger);
+    width: 100%;
+}
+
+.btn-vaciar:hover {
+    background-color: var(--danger);
+    color: #ffffff;
+}
+
+/* Estilos para botones secundarios/acción dentro de tablas */
+.btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+/* Mensajes dinámicos */
+.mensaje {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Pie de Página (Footer)
+   ========================================================================== */
+.pie {
+    background-color: #0f172a;
+    color: #94a3b8;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+    margin-top: auto;
+}
